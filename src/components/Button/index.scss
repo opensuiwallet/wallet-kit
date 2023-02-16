@@ -1,0 +1,47 @@
+:root {
+  --osw-accent-hs: 190, 100%;
+  --osw-on-accent-rgb: 255, 255, 255;
+  --osw-bg-rgb: 255, 255, 250;
+  --osw-on-bg-rgb: 0, 0, 0;
+
+  --osw-border-radius: 8px;
+
+  --osw-font-family: "Inter", sans-serif;
+  --osw-font-family-mono: "IBM Plex Mono", monospace;
+
+  --osw-font-size-large: 18px;
+  --osw-font-size-medium: 16px;
+  --osw-font-size-small: 14px;
+  --osw-font-size-tiny: 12px;
+
+  --osw-line-height-large: 22px;
+  --osw-line-height-medium: 20px;
+  --osw-line-height-small: 17px;
+
+  --osw-button-width: 240px;
+}
+
+.osw-button {
+  border-radius: var(--osw-border-radius);
+  width: var(--osw-button-width);
+  padding: 10px 12px;
+  color: rgba(var(--osw-on-accent-rgb), 1);
+  font-weight: 600;
+  font-size: var(--osw-font-size-medium);
+  font-family: var(--osw-font-family);
+  line-height: var(--osw-line-height-medium);
+  cursor: pointer;
+  border: 0;
+
+  & {
+    background-color: hsl(var(--osw-accent-hs), 50%);
+  }
+
+  &:hover {
+    background-color: hsl(var(--osw-accent-hs), 45%);
+  }
+
+  &:active {
+    background-color: hsl(var(--osw-accent-hs), 37%);
+  }
+}
