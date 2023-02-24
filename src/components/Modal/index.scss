@@ -16,7 +16,7 @@
 .osw-dialog__content {
   box-sizing: border-box;
   padding: 24px 24px;
-  width: 400px;
+  width: 440px;
   position: relative;
   background-color: rgba(var(--osw-bg-rgb), 1);
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -112,6 +112,7 @@
   padding: 6px;
   transition: background-color 0.2s;
   border-radius: var(--osw-border-radius);
+  justify-content: space-between;
 
   & {
     background-color: var(--osw-button-bg-varient1);
@@ -128,11 +129,18 @@
     color: rgba(var(--osw-on-bg-rgb), 1);
   }
 
+  &__icon_name {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
   &__icon {
     width: 32px;
     height: 32px;
     border-radius: 16px;
-    margin-right: 10px;
+    margin-right: 20px;
     // box-shadow: 0 0 0 1px #dcdfea
   }
 
@@ -140,6 +148,22 @@
     width: 36px;
     border-radius: 16px;
     object-fit: cover;
+  }
+
+  &__install {
+    margin-right: 15px;
+    border-radius: 8px;
+    padding: 4px 8px;
+    background: rgba(var(--osw-on-bg-rgb), 0.05);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    svg{
+      margin-left: 5px;
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 

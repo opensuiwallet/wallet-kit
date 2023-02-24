@@ -52,9 +52,7 @@ export interface MyWallet {
   adapter: MyWalletAdapter | undefined;
   installed: boolean | undefined;
   iconUrl: string;
-  downloadUrl: {
-    browserExtension?: string;
-  };
+  downloadUrl?: string;
 }
 
 export type MyDefaultWallet = Omit<

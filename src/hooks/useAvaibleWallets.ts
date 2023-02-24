@@ -21,7 +21,7 @@ export const useAvailableWallets = (defaultWallets: MyDefaultWallet[]) => {
     }
 
     return defaultWallets.slice(0, 1).map((item) => {
-      const foundAdapter = availableWalletAdapters.find(
+      const foundAdapter = availableWalletAdapters?.find(
         (walletAdapter) => item.name === walletAdapter.name
       );
       if (foundAdapter) {
@@ -87,9 +87,7 @@ export const useAvailableWallets = (defaultWallets: MyDefaultWallet[]) => {
           adapter: adapter,
           installed: true,
           iconUrl: adapter.icon,
-          downloadUrl: {
-            browserExtension: "", // no need to know
-          },
+          downloadUrl: "",
         };
       });
   }, [defaultWallets, availableWalletAdapters]);

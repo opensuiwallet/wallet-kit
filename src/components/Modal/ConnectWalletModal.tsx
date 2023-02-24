@@ -4,6 +4,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { DialogContentProps } from "@radix-ui/react-dialog";
 import classnames from "classnames";
 import { ArrowLeftIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { CloudArrowDownIcon } from "@heroicons/react/24/outline";
 import { useWalletKit } from "../../hooks";
 import { isNonEmptyArray, WalletKitError, Icon } from "../../utils";
 import "./index.scss";
@@ -71,12 +72,19 @@ const WalletItem = (props: WalletItemProps) => {
         props.onSelect?.(wallet);
       }}
     >
-      <Icon
-        icon={icon}
-        className={"osw-select-item__icon"}
-        elClassName={"osw-select-item__icon"}
-      />
-      {wallet.name}
+      <div className={"osw-select-item__icon_name"}>
+        <Icon
+          icon={icon}
+          className={"osw-select-item__icon"}
+          elClassName={"osw-select-item__icon"}
+        />
+        {wallet.name}
+      </div>
+      {!wallet.installed && (
+        <div className={"osw-select-item__install"}>
+          Not installed <CloudArrowDownIcon />
+        </div>
+      )}
     </div>
   );
 };
@@ -135,12 +143,12 @@ const InstallGuide = (props: InstallGuideProps) => {
         <button
           className="osw-button osw-install__button"
           onClick={() => {
-            if (!wallet.downloadUrl?.browserExtension) {
+            if (!wallet.downloadUrl) {
               throw new WalletKitError(
                 `no downloadUrl config on this wallet: ${wallet.name}`
               );
             }
-            window.open(wallet.downloadUrl.browserExtension, "_blank");
+            window.open(wallet.downloadUrl, "_blank");
           }}
         >
           Get Wallet
@@ -197,13 +205,20 @@ export const ConnectWalletModal = (props: ConnectModalProps) => {
       setActiveWallet(wallet);
       if (wallet.installed) {
         select(wallet.name);
+      } else {
+        if (!wallet.downloadUrl) {
+          throw new WalletKitError(
+            `no downloadUrl config on this wallet: ${wallet.name}`
+          );
+        }
+        window.open(wallet.downloadUrl, "_blank");
       }
     },
     [select]
   );
 
   function renderBody() {
-    if (activeWallet) {
+    /*if (activeWallet) {
       if (!activeWallet.installed) {
         return (
           <InstallGuide
@@ -224,7 +239,7 @@ export const ConnectWalletModal = (props: ConnectModalProps) => {
           />
         );
       }
-    }
+    }*/
     return (
       <div>
         <div className={"osw-dialog__header"}>
