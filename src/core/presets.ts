@@ -12,7 +12,7 @@ export enum PresetWallet {
   SPACECY_SUI_WALLET = "Spacecy Sui Wallet",
   BIT_KEEP_WALLET = "BitKeep Wallet",
   SURF_WALLET = "Surf Wallet",
-  SUIET_WALLET = "Suiet Wallet",
+  SUIET_WALLET = "Suiet",
 }
 
 const supportWalletArray = [
